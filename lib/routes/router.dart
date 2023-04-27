@@ -9,6 +9,12 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   routes: <RouteBase>[
     ShellRoute(
+        pageBuilder: (context, state, child) => NoTransitionPage(
+            name: state.name,
+            key: state.pageKey,
+            child: BottomNavigation(
+              child: child,
+            )),
         builder: (context, state, child) {
           return BottomNavigation(child: child);
         },
