@@ -1,5 +1,6 @@
 import 'package:flutter_firebase/core/auth/login/screen/login_screen.dart';
 import 'package:flutter_firebase/core/auth/splash_screen/screen/splash_screen.dart';
+import 'package:flutter_firebase/modules/home/screen/bottomnavigation_bar.dart';
 import 'package:flutter_firebase/modules/home/screen/home_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +8,18 @@ final GoRouter router = GoRouter(
   initialLocation: "/splash_screen",
   debugLogDiagnostics: true,
   routes: <RouteBase>[
+    ShellRoute(
+        builder: (context, state, child) {
+          return BottomNavigation(child: child);
+        },
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) {
+              return const HomeScreen();
+            },
+          )
+        ]),
     GoRoute(
       path: '/splash_screen',
       builder: (context, state) {
@@ -19,11 +32,5 @@ final GoRouter router = GoRouter(
         return const LoginScreen();
       },
     ),
-    GoRoute(
-      path: '/homescreen',
-      builder: (context, state) {
-        return const HomeScreen();
-      },
-    )
   ],
 );

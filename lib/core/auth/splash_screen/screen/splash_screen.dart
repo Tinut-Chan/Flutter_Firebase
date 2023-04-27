@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 4),
         // () => context.go('/login/screen'),
         () async {
-      context.go('/homescreen');
+      context.go('/');
       // if (_loginController.token.value != '') {
       //   context.go('/homescreen');
       // } else {
