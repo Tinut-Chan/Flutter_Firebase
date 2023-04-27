@@ -15,6 +15,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: widget.child,
       bottomNavigationBar: SafeArea(
         bottom: false,
         child: BottomNavigationBar(
