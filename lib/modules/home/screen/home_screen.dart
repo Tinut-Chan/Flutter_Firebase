@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/modules/home/widget/custom_carousel_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,20 +11,13 @@ class HomeScreen extends StatelessWidget {
         title: const Text("Home"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text("Button 1"),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text("Button 2"),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text("Button 3"),
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          CustomSlider(
+            margin: EdgeInsets.all(10.0),
+            padEnds: true,
+            viewportFraction: 0.9,
           ),
         ],
       ),
