@@ -9,8 +9,6 @@ class BottomNavigation extends StatefulWidget {
   State<BottomNavigation> createState() => _BottomNavigationState();
 }
 
-bool isActive = false;
-
 class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
           type: BottomNavigationBarType.fixed,
           elevation: 0,
           currentIndex: _calculateSelectedIndex(context),
-          onTap: (index) => _onItemTapped(index, context),
+          onTap: (index) {
+            _onItemTapped(index, context);
+            setState(() {});
+          },
           items: const [
             BottomNavigationBarItem(
               label: 'Home',
@@ -49,7 +50,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        (context).go('/');
+        (context).go('/home');
         break;
       case 1:
         context.go('/trending');
@@ -65,20 +66,16 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   static int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith('/')) {
-      isActive = false;
+    if (location.startsWith('/home')) {
       return 0;
     }
     if (location.startsWith('/trending')) {
-      isActive = false;
       return 1;
     }
     if (location.startsWith('/watchlist')) {
-      isActive = false;
       return 2;
     }
     if (location.startsWith('/profile')) {
-      isActive = false;
       return 3;
     }
     return 0;
