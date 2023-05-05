@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_firebase/modules/trending/screen/media_player.dart';
 
 class TrendingScreen extends StatelessWidget {
   const TrendingScreen({super.key});
@@ -21,7 +19,6 @@ class TrendingScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
             ),
           ),
-          const VideoPlayer(),
         ],
       ),
     );
