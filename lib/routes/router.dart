@@ -3,6 +3,7 @@ import 'package:flutter_firebase/core/auth/splash_screen/screen/splash_screen.da
 import 'package:flutter_firebase/modules/home/screen/bottomnavigation_bar.dart';
 import 'package:flutter_firebase/modules/home/screen/home_screen.dart';
 import 'package:flutter_firebase/modules/profile/screen/profile_screen.dart';
+import 'package:flutter_firebase/modules/profile/screen/setting_screen.dart';
 import 'package:flutter_firebase/modules/trending/screen/trending_screen.dart';
 import 'package:flutter_firebase/modules/watch_list/screen/watch_list_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -41,6 +42,15 @@ final GoRouter router = GoRouter(
           builder: (context, state) {
             return const ProfileScreen();
           },
+          routes: [
+            GoRoute(
+              path: 'setting',
+              name: 'Setting',
+              builder: (context, state) {
+                return const SettingScreen();
+              },
+            ),
+          ],
         ),
         GoRoute(
           path: '/watch-list',
@@ -64,4 +74,6 @@ final GoRouter router = GoRouter(
       },
     ),
   ],
+  // errorPageBuilder: (_, state) =>
+  //     const ErorrRoutePage();
 );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase/modules/profile/controller/profile_controller.dart';
 import 'package:flutter_firebase/widget/custom_appbar.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -23,6 +24,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: const Text('Profile'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                context.push('/profile/setting');
+              },
+            ),
+          ),
+        ],
       ),
       body: Obx(
         () => _profileCon.isLoadingAllData.value
