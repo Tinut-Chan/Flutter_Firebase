@@ -17,15 +17,21 @@ class Data extends StatelessWidget {
             itemCount: docs.length,
             itemBuilder: (_, i) {
               final data = docs[i].data();
-              return ListTile(
-                leading: CircleAvatar(
-                  child: Image.network(
-                    data['image'][0],
-                    filterQuality: FilterQuality.high,
+              return Column(
+                children: [
+                  Container(
+                    height: 150.0,
+                    width: 80.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Image.network(
+                      data['image'][0],
+                      filterQuality: FilterQuality.high,
+                    ),
                   ),
-                ),
-                title: Text(data['id'].toString()),
-                subtitle: Text(data['title']),
+                  Text(data['title']),
+                ],
               );
             },
           );

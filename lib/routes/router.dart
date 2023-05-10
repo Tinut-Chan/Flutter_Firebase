@@ -4,6 +4,7 @@ import 'package:flutter_firebase/modules/home/screen/bottomnavigation_bar.dart';
 import 'package:flutter_firebase/modules/home/screen/home_screen.dart';
 import 'package:flutter_firebase/modules/profile/screen/profile_screen.dart';
 import 'package:flutter_firebase/modules/trending/screen/trending_screen.dart';
+import 'package:flutter_firebase/modules/watch_list/screen/watch_list_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -41,6 +42,13 @@ final GoRouter router = GoRouter(
             return const ProfileScreen();
           },
         ),
+        GoRoute(
+          path: '/watch-list',
+          name: 'WatchList',
+          builder: (context, state) {
+            return const WatchListScreen();
+          },
+        )
       ],
     ),
     GoRoute(

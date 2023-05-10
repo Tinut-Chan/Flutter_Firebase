@@ -56,7 +56,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         context.go('/trending');
         break;
       case 2:
-        (context).go('/watchlist');
+        (context).go('/watch-list');
         break;
       case 3:
         (context).go('/profile');
@@ -72,7 +72,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     if (location.startsWith('/trending')) {
       return 1;
     }
-    if (location.startsWith('/watchlist')) {
+    if (location.startsWith('/watch-list')) {
       return 2;
     }
     if (location.startsWith('/profile')) {
