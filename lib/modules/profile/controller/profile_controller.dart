@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/modules/profile/model/profile_model.dart';
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class ProfileController extends GetxController {
   var isLoadingAllData = false.obs;
@@ -35,5 +36,20 @@ class ProfileController extends GetxController {
       isLoadingAllData(false);
     }
     isLoadingAllData(false);
+  }
+
+  final appName = ''.obs;
+  final packageName = ''.obs;
+  final version = ''.obs;
+  final buildNumber = ''.obs;
+  Future<void> configuAppVersion() async {
+    await PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
+      appName.value = packageInfo.appName;
+      packageName.value = packageInfo.packageName;
+      version.value = packageInfo.version;
+      buildNumber.value = packageInfo.buildNumber;
+    }).then((value) {
+      debugPrint('= = v= $value');
+    });
   }
 }
