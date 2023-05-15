@@ -9,6 +9,9 @@ class WatchListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Watch List'),
       ),
+      body: const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }
