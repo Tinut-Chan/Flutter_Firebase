@@ -58,6 +58,8 @@ dependencies:
   firebase_messaging: ^14.5.0
   connectivity_plus: ^4.0.0
   package_info_plus: ^4.0.0
+  flutter_local_notifications: ^14.0.0+2
+  flutter_native_timezone: ^2.0.0
 
 
 dev_dependencies:

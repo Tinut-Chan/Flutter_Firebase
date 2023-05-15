@@ -3,7 +3,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/core/network/network_binding.dart';
+import 'package:flutter_firebase/core/utils/notification_helper.dart';
 import 'package:flutter_firebase/routes/router.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'firebase_options.dart';
 
@@ -17,6 +19,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FlutterLocalNotificationsPlugin();
+  NotificationHelper();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   final messaging = FirebaseMessaging.instance;
   String? token = await messaging.getToken();
@@ -30,15 +34,15 @@ void main() async {
     provisional: false,
     sound: true,
   );
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    debugPrint('Got a message whilst in the foreground!');
-    debugPrint('Message data: ${message.data}');
+  // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //   debugPrint('Got a message whilst in the foreground!');
+  //   debugPrint('Message data: ${message.data}');
 
-    if (message.notification != null) {
-      debugPrint(
-          'Message also contained a notification: ${message.notification}');
-    }
-  });
+  //   if (message.notification != null) {
+  //     debugPrint(
+  //         'Message also contained a notification: ${message.notification}');
+  //   }
+  // });
 
   if (kDebugMode) {
     print('Permission granted: ${settings.authorizationStatus}');
