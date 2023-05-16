@@ -308,7 +308,7 @@ class NotificationHelper {
 
       print("Handling a background message: ${message.messageId}");
 
-      debugPrint('Handling data: ${message.data}');
+      debugPrint('= = = = = Handling data: ${message.data}');
 
       if (message.notification != null) {
         // debugPrint(

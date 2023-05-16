@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/modules/home/controller/home_screen_controllers.dart';
+import 'package:flutter_firebase/utils/notification_helper.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final int? totalNotification;
   const HomeScreen({Key? key, this.totalNotification}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    NotificationHelper.initial();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +33,28 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: totalNotification != null
-                ? Text('$totalNotification')
-                : const SizedBox(),
-          )
+              padding: const EdgeInsets.all(10.0),
+              child: IconButton(
+                icon: const Icon(Icons.message_rounded),
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        height: context.height,
+                        color: Colors.transparent,
+                      );
+                    },
+                  );
+                },
+              ))
         ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
+          children: [
             // Expanded(
             //   child: CustomSlider(
             //     margin: EdgeInsets.zero,
@@ -43,9 +65,17 @@ class HomeScreen extends StatelessWidget {
             // const Expanded(
             //   child: Data(),
             // ),
-            // const Center(
             //   child: Text('Hello'),
             // ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  NotificationHelper.showNotification(
+                      title: 'Flutter', body: 'I love you', payload: 'haha');
+                },
+                child: const Text('Get Data'),
+              ),
+            ),
           ],
         ),
       ),

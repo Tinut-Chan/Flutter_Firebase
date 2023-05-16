@@ -1,21 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/core/network/network_binding.dart';
-import 'package:flutter_firebase/core/utils/notification_helper.dart';
+import 'package:flutter_firebase/utils/notification_helper.dart';
 import 'package:flutter_firebase/modules/home/controller/home_screen_controllers.dart';
 import 'package:flutter_firebase/routes/router.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Permission.notification.isDenied.then((value) {
-    if (value) {
-      Permission.notification.request();
-    }
-  });
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
